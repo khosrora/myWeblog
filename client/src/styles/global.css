@@ -1,0 +1,33 @@
+* {
+    margin: 0;
+    padding: 0;
+    outline: none !important;
+}
+
+body {
+    font-family: "Shabnam";
+}
+
+.avatar-user {
+    width: "40px";
+    height: 40px;
+    cursor: 'pointer'
+}
+
+/* auth */
+
+@import url("./auth.css");
+/* comment */
+
+@import url("./comment.css");
+/*post */
+
+@import url("./post.css");
+/* 404 */
+
+@import url("./404.css");
+/* lazy loading */
+
+@import url('react-lazy-load-image-component/src/effects/blur.css');
+/* category */
+@import url("./category.css");

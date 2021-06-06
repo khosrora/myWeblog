@@ -1,0 +1,16 @@
+@font-face {
+    font-family: "Shabnam";
+    src: url('../fonts/Shabnam-Bold-FD.eot');
+    src: url('../fonts/Shabnam-Bold-FD.woff') format('woff'), url('Shabnam.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: "Shabnam";
+}
