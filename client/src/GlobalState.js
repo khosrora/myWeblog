@@ -7,6 +7,7 @@ import CategoriesAPI from './api/CategoriesApi';
 import UserAPI from './api/UserApi';
 import SuggestAPI from './api/SuggestApi';
 import GetUsersAPI from './api/GetUsersAPI';
+import GlobalData from './api/GlobalData';
 
 
 export const GlobalState = createContext();
@@ -27,12 +28,13 @@ export const DataProvider = ({ children }) => {
 
 
     const state = {
+        GlobalData: GlobalData(),
         token: [token, setToken],
         PostsAPI: PostsAPI(),
         CategoriesAPI: CategoriesAPI(),
         userAPI: UserAPI(token),
         SuggestAPI: SuggestAPI(),
-        GetUsersAPI: GetUsersAPI()
+        GetUsersAPI: GetUsersAPI(),
     }
 
 

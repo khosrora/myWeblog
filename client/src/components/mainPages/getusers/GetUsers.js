@@ -29,8 +29,9 @@ const GetUsers = () => {
     return (
         <div>
             <div className="container">
-                <p> کاربران ثبت نام کرده
+                <p> 
                 <span className="text-danger">{users.result}</span>
+                کاربران ثبت نام کرده
                 </p>
             </div>
             <table className="table" style={{ overflow: "auto" }}>
@@ -40,7 +41,6 @@ const GetUsers = () => {
                         <th scope="col">نام کاربری</th>
                         <th scope="col">پست الکترونیک</th>
                         <th scope="col">شماره همراه</th>
-                        <th scope="col">نوع کاربری</th>
                         <th scope="col">عملیات ها</th>
                     </tr>
                 </thead>
@@ -52,10 +52,9 @@ const GetUsers = () => {
                                 <td>{item.fullname}</td>
                                 <td>{item.email}</td>
                                 <td>{item.mobile}</td>
-                                <td>{item.admin}</td>
                                 <td>
                                     <button className="mx-1 btn btn-sm btn-warning text-white" onClick={() => setAdmin(item._id)}>
-                                        اعمال مدیریت
+                                      {item.admin === 0 ? "  اعمال مدیریت" : "مدیر است"}
                                     </button>
                                     <button className="mx-1 btn btn-sm btn-danger text-white" onClick={() => deleteUser(item._id)}>حذف</button>
                                 </td>

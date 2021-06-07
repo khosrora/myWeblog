@@ -10,6 +10,8 @@ const PostsAPI = () => {
     const [category, setCategory] = useState("");
     const [callback, setCallback] = useState(false);
 
+
+
     useEffect(() => {
         const getPosts = async () => {
             const res = await axios.get(`/api/post?limit=${page * 8}&${category}&${sort}`)

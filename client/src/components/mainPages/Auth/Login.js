@@ -1,7 +1,13 @@
 import { useState } from 'react'
 import axios from 'axios';
+import { useContext } from 'react';
+import { GlobalState } from '../../../GlobalState';
 
 const Login = ({ setLogin }) => {
+
+    const state = useContext(GlobalState)
+
+    const [loading, setLoading] = state.GlobalData.loading;
 
     const [user, setUser] = useState({
         email: "", password: ""
@@ -18,11 +24,13 @@ const Login = ({ setLogin }) => {
     const loginSubmit = async e => {
         e.preventDefault();
         try {
+            setLoading(!loading)
             await axios.post("/user/login", { ...user })
             localStorage.setItem("firstLogin", true)
+            setLoading(false)
             window.location.href = "/"
         } catch (err) {
-            alert(err.response.data.msg)
+            alert(err.msg)
         }
     }
 

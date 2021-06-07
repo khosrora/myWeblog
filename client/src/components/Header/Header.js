@@ -18,12 +18,15 @@ const Header = () => {
 
     const [sort, setSort] = state.PostsAPI.sort;
 
+    const [loading, setLoading] = state.GlobalData.loading;
 
     const logoutUser = async () => {
+        setLoading(!loading)
         await axios.get("/user/logout")
         localStorage.clear();
         setIsAdmin(false)
         setIsLogged(false)
+        setLoading(false)
     }
 
 

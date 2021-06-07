@@ -13,7 +13,8 @@ const initPost = {
 
 const CreatePost = () => {
 
-    const state = useContext(GlobalState)
+    const state = useContext(GlobalState);
+    const [loading, setLoading] = state.GlobalData.loading;
     const [token] = state.token;
     const [categories] = state.CategoriesAPI.categories
     const [callback, setCallback] = state.PostsAPI.callback
@@ -63,7 +64,7 @@ const CreatePost = () => {
             data.append("file", file)
             if (!file) alert("لطفا عکس را بارگذاری کنید")
             if (onEdit) {
-                const res = await axios.put(`/api/post/${post._id}`, data, {
+                await axios.put(`/api/post/${post._id}`, data, {
                     headers: {
                         "content-type": "multipart/form-data",
                         Authorization: token
@@ -71,19 +72,17 @@ const CreatePost = () => {
                 })
                 setCallback(!callback)
                 history.push("/")
-                console.log(res);
-                alert(res.data.msg);
             } else {
-
-                const res = await axios.post("/api/post", data, {
+                setLoading(!loading)
+                await axios.post("/api/post", data, {
                     headers: {
                         "content-type": "multipart/form-data",
                         Authorization: token
                     }
                 })
+                setLoading(false)
                 setCallback(!callback)
                 history.push("/")
-                alert(res.data.msg);
             }
         } catch (err) {
             console.log(err)
